@@ -6,9 +6,9 @@ import ChevronDown from "./../assets/icon/light/ChevronDown.svg";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Courses from "../assets/pages/Courses";
-import Diary from "../assets/pages/Diary";
 import Counseling from "../assets/pages/Counseling";
 import Home from "../assets/pages/Home";
+import Diaries from "../assets/pages/Diaries";
 
 const Header = () => {
   return (
@@ -67,7 +67,7 @@ const Header = () => {
       <div className="container">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/diary" element={<Diary />} />
+          <Route path="/diary" element={<Diaries />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/counseling" element={<Counseling />} />
         </Routes>
