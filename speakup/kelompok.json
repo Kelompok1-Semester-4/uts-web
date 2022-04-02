@@ -236,58 +236,59 @@
     {
       "id": 1,
       "detail_user_id": 123,
-      "title": "How To Be Productive Every Day",
       "image": "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "title": "How To Be Productive Every Day",
       "course_type_id": 1,
-      "price": "200",
+      "users": "3,987",
       "rate": {
         "id": 3,
         "name": "popular"
       },
       "discount": "10",
       "created_at": "2020-05-05",
-      "description": "Guide you to organize your schedule to be more organized",
+      "description": " Mr. Noga S.Psi Guide you to organize your schedule to be more organized. Learn of the mistakes",
       "benefit": "this is the benefit of the course"
     },
     {
       "id": 2,
       "detail_user_id": 234,
+      "image": "https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "title": "Know Yourself And Maximize",
-      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+
       "course_type_id": 2,
-      "price": "200",
+      "users": "2,983",
       "rate": {
         "id": 3,
         "name": "popular"
       },
       "discount": "10",
       "created_at": "2020-05-05",
-      "description": "Together we will learn how to brand yourself",
+      "description": "Together we will learn how to brand yourself.Life is a journey to be experienced, not a problem to be solved.",
       "benefit": "this is the benefit of the course"
     },
     {
       "id": 3,
       "detail_user_id": 345,
+      "image": "https://images.unsplash.com/photo-1565073624497-7144969d0a07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       "title": "How to Get More Than Before",
-      "image": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       "course_type_id": 3,
-      "price": "200",
+      "users": "2,987",
       "rate": {
         "id": 3,
         "name": "popular"
       },
       "discount": "10",
       "created_at": "2020-05-05",
-      "description": "Guide you to organize your schedule to be more organized",
+      "description": "Where focus goes energy flows. This is the benefit of the course by Nauga Might",
       "benefit": "this is the benefit of the course"
     },
     {
       "id": 4,
       "detail_user_id": 456,
-      "title": "How to Get More Than Before",
       "image": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "title": "How to Happiness Than Of Your Life",
       "course_type_id": 3,
-      "price": "200",
+      "users": "1,565",
       "rate": {
         "id": 2,
         "name": "midle"
@@ -300,17 +301,17 @@
     {
       "id": 5,
       "detail_user_id": 789,
-      "title": "How to Get More Than Before",
-      "image": "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "image": "https://images.unsplash.com/photo-1586879998462-a717f0ed7521?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+      "title": "Overcome Mental Health Of Cyberbullying",
       "course_type_id": 3,
-      "price": "200",
+      "users": "1,200",
       "rate": {
         "id": 1,
         "name": "normal"
       },
       "discount": "10",
       "created_at": "2020-05-05",
-      "description": "Guide you to organize your schedule to be more organized",
+      "description": "Bullying is never fun. It’s cruel and terrible thing to do to someone. If you are being bullied, it is not your fault. No one deserves to be bullied, ever.",
       "benefit": "this is the benefit of the course"
     }
   ],
