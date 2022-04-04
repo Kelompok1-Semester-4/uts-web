@@ -213,6 +213,9 @@ button.btn-small {
 }
 
 /* FAQ */
+.faq {
+    margin-bottom: 6.875rem;
+}
 .faq-list {
     margin-top: 11rem;
 }
