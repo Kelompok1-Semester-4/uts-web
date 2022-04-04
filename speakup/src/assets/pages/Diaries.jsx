@@ -1,8 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
+import Diary from "../../items/DiaryItems";
+class Diaries extends Component{
+    state = {
+        diary: [],
+    };
+    getDataApi = () => {
+        fetch("https://speakupapi.herokuapp.com/api/diaries")
+            .then((response) => response.json())
+            .then((jsonHasilAmbilDariAPI) => {
+                this.setState({
+                    diary: jsonHasilAmbilDariAPI,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    getDataApi2 = (id) => {
+        fetch("https://speakupapi.herokuapp.com/api/diaries")
+        fetch("?detail_user.user_id=" + id, { method: "GET" })
+            .then((response) => response.json())
+            .then((jsonHasilAmbilDariAPI) => {
+                this.setState({
+                    diary: jsonHasilAmbilDariAPI,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    
 
-function Diaries(props) {
-    return(
-        <div className="container diaries">
+    componentDidMount() {
+        this.getDataApi();
+    }
+    render(){
+        return(
+            <div className="container diaries">
             <div className="row diary-header justify-content-center">
                 <h1>Browse Your Favorite Diary</h1>
                 <p className="text-center">The best diaries are made by users for other users to enjoy</p>
@@ -14,19 +48,19 @@ function Diaries(props) {
 
             <div className="row justify-content-center category-button">
                 <div className="col-md text-center">
-                    <button className="btn btn-primary">Productivity</button>
+                    <button className="btn btn-primary" onClick={() => this.getDataApi2(7)}>Productivity</button>
                 </div>
                 <div className="col-md text-center">
-                <button className="btn btn-default">Relationship</button>
+                <button className="btn btn-default" onClick={() => this.getDataApi2(8)}>Relationship</button>
                 </div>
                 <div className="col-md text-center">
-                    <button className="btn btn-default">Mental Health</button>
+                    <button className="btn btn-default" onClick={() => this.getDataApi2(10)}>Mental Health</button>
                 </div>
                 <div className="col-md text-center">
-                    <button className="btn btn-default">Life Plan</button>
+                    <button className="btn btn-default" onClick={() => this.getDataApi2(2)}>Life Plan</button>
                 </div>
                 <div className="col-md text-center">
-                    <button className="btn btn-default">Other</button>
+                    <button className="btn btn-default" onClick={() => this.getDataApi()}>Other</button>
                 </div>
             </div>
 
@@ -34,74 +68,22 @@ function Diaries(props) {
                 <h1>List Of Diary</h1>
 
                 <div className="row diary-items">
-                    <div className="col-md-3 col-sm-6">
-                        <img src="https://images.unsplash.com/photo-1648793633175-f3635585014b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8Ym84alFLVGFFMFl8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" className="diary-item" alt="" />
-
-                        <h3 className="diary-title">How To Study With Music</h3>
-                        <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
-
-                        <div className="row mt-4 d-flex align-items-end">
-                            <div className="col-md-4 d-flex diary-info">
-                                <span className="d-inline-block text-truncate" style={{maxWidth: 80}}>Robie Holms</span>
-                                <p className="created-at">22 April 2022</p>
-                            </div>
-                            <div className="col text-end">
-                                <button className="btn btn-primary btn-sm">Read</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6">
-                        <img src="https://images.unsplash.com/photo-1648900925554-dbe87a647154?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" className="diary-item" alt="" />
-
-                        <h3 className="diary-title">See What I See ? </h3>
-                        <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
-
-                        <div className="row mt-4 d-flex align-items-end">
-                            <div className="col-md-4 d-flex diary-info">
-                                <span className="d-inline-block text-truncate" style={{maxWidth: 80}}>Annie Hai</span>
-                                <p className="created-at">22 April 2022</p>
-                            </div>
-                            <div className="col text-end">
-                                <button className="btn btn-primary btn-sm">Read</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6">
-                        <img src="https://images.unsplash.com/photo-1644982654131-79f434ac0c6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" className="diary-item" alt="" />
-
-                        <h3 className="diary-title">Global & My Phone</h3>
-                        <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
-
-                        <div className="row mt-4 d-flex align-items-end">
-                            <div className="col-md-4 d-flex diary-info">
-                                <span className="d-inline-block text-truncate" style={{maxWidth: 80}}>Jhon State Hams</span>
-                                <p className="created-at">22 April 2022</p>
-                            </div>
-                            <div className="col text-end">
-                                <button className="btn btn-primary btn-sm">Read</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6">
-                        <img src="https://images.unsplash.com/photo-1648840151800-aa9670869156?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" className="diary-item" alt="" />
-
-                        <h3 className="diary-title">My Life is My Book</h3>
-                        <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
-
-                        <div className="row mt-4 d-flex align-items-end">
-                            <div className="col-md-4 d-flex diary-info">
-                                <span className="d-inline-block text-truncate" style={{maxWidth: 80}}>Jhon State Hams</span>
-                                <p className="created-at">22 April 2022</p>
-                            </div>
-                            <div className="col text-end">
-                                <button className="btn btn-primary btn-sm">Read</button>
-                            </div>
-                        </div>
-                    </div>
+                    {this.state.diary.map((diary) => {
+                        return(
+                            <Diary 
+                            key={diary.id}
+                            title={diary.title}
+                            gambar={diary.cover_image}
+                            nama={diary.detail_user.name}
+                            />
+                        )
+                    })}
                 </div>
             </div>
         </div>
-    );
+        )
+    }
 }
+
 
 export default Diaries;
