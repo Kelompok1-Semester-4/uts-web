@@ -4,21 +4,21 @@ import icon_lifetime_access from "../../assets/images/icon_lifetime_access.png";
 import icon_online_counseling from "../../assets/images/icon_online_counseling.png";
 import icon_diary from "../../assets/images/icon_diary.png";
 import icon_mentorship from "../../assets/images/icon_mentor.png";
-import ConselorItems from "../../items/ConselorItems";
 import PopularCourseItem from "../../items/PopularCourseItem";
+import ConselorItems from "../../items/ConselorItems";
 
 class Home extends React.Component {
   state = {
-    kelompok: [],
-    conselor: [],
+    courses: [],
+    conselors: [],
   };
 
   getDataApi = () => {
-    fetch("http://localhost:3001/courses?rate.id=3")
+    fetch("https://speakupapi.herokuapp.com/api/courses")
       .then((response) => response.json())
       .then((response) => {
         this.setState({
-          kelompok: response,
+          courses: response,
         });
       })
       .catch((error) => {
@@ -26,12 +26,12 @@ class Home extends React.Component {
       });
   };
 
-  gwtApiConselor = () => {
-    fetch("http://localhost:3001/detail_user?users.role.name=conselor")
+  getApiconselors = () => {
+    fetch("https://speakupapi.herokuapp.com/api/users?role.id=2")
       .then((response) => response.json())
       .then((response) => {
         this.setState({
-          conselor: response,
+          conselors: response,
         });
       })
       .catch((error) => {
@@ -41,7 +41,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.getDataApi();
-    this.gwtApiConselor();
+    this.getApiconselors();
   }
 
   render() {
@@ -89,22 +89,24 @@ class Home extends React.Component {
           <h3>See all →</h3>
 
           <div className="row popular-course-items mt-4 flex-row flex-nowrap flex-row flex-nowrap overflow-scroll">
-            {this.state.kelompok.map((kelompok) => {
-              return (
-                <PopularCourseItem
-                  key={kelompok.id}
-                  img={kelompok.image}
-                  title={kelompok.title}
-                  desc={kelompok.description}
-                />
-              );
+            {this.state.courses.map((course, index) => {
+              if (index < 3) {
+                return (
+                  <PopularCourseItem
+                    key={course.id}
+                    img={course.thumbnail}
+                    title={course.title}
+                    desc={course.detail_course[0].description}
+                  />
+                );
+              }
             })}
           </div>
         </div>
 
         <div className="row d-flex justify-content-between align-items-center popular-course">
           <div className="col-md-5 ">
-            <h1>Our Best Conselor</h1>
+            <h1>Our Best conselors</h1>
             <p className="text-secondary mt-3">
               We have a wide network of relationships so that we can meet the
               various needs of our customers and partners.
@@ -113,19 +115,23 @@ class Home extends React.Component {
           <h3>See all →</h3>
         </div>
 
-        {/* CONSELOR LIST */}
-        <div className="row conselor">
+        {/* conselors LIST */}
+        <div className="row conselors mt-4">
           {/* {[1, 2, 3, 4, 5, 6].map((item, index) => {
-          return <ConselorItems />;
+          return <conselorsItems />;
         })} */}
 
-          {this.state.conselor.map((conselor) => {
+          {this.state.conselors.map((conselors) => {
             return (
               <ConselorItems
-                key={conselor.id}
-                img={conselor.photo}
-                name={conselor.name}
-                position={conselor.position}
+                key={conselors.id}
+                img={conselors.detail_user.photo}
+                name={conselors.detail_user.name}
+                position={
+                  conselors.detail_user.job +
+                  " • " +
+                  conselors.detail_user.address
+                }
               />
             );
           })}
