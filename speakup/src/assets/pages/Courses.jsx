@@ -7,6 +7,11 @@ import icon_diary from "../../assets/images/icon_diary.png";
 import icon_mentorship from "../../assets/images/icon_mentor.png";
 import CourseItem from "../../items/CourseItem";
 
+
+import Header from "../../components/Header";
+import Faq from "../../components/Faq";
+import Footer from "../../components/Footer";
+
 class Courses extends React.Component {
   state = {
     kelompok: [],
@@ -31,7 +36,9 @@ class Courses extends React.Component {
 
   render() {
     return (
-      <div className="courses">
+      <div>
+        <Header />
+        <div className="courses container">
         {/* HERO */}
         <div className="row ">
           <div className="col-md-6 align-self-center">
@@ -109,6 +116,9 @@ class Courses extends React.Component {
             })}
           </div>
         </div>
+      </div>
+        <Faq />
+        <Footer />
       </div>
     );
   }
