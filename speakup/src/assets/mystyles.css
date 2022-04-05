@@ -604,3 +604,130 @@ img.diary-item {
 
 
 /* END */
+
+
+/* DETAIL COURSE */
+.detail-course {
+    margin-top: 126px;
+}
+
+.detail-course .title {
+    font-size: 2rem;
+    font-weight: var(--semibold);
+    color: var(--black);
+    margin-bottom: 32px;
+}
+
+.detail-course img.thumbnail {
+    width: 100%;
+    height: 317px;
+    object-fit: cover;
+    border-radius: 1.875rem;
+    margin-bottom: 55px;
+}
+
+.detail-course .tags {
+    display: inline-block;
+    margin-bottom: unset;
+    margin-bottom: 4px;
+}
+
+.detail-course h4 {
+    font-size: 1rem;
+    color: var(--black);
+    font-weight: var(--semibold);
+}
+
+.track-item {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 182px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 14px 15px;
+    margin-right: 29px;
+    margin-bottom: 29px;
+    box-sizing: border-box;
+}
+
+.track-item title {
+    display: flex;
+    align-items:center;
+}
+
+.track-item p {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-course .bp {
+    margin-top: 50px;
+}
+
+.bp p.desc {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    display: block;
+}
+
+.track-item span {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    line-height: X;
+    /* fallback */
+    max-height: X * N;
+}
+
+.track-item img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    padding: 0;
+    /* margin: 0; */
+}
+
+.detail-course h3.price {
+    font-size: 1.5rem;
+    /* margin-bottom: unset !important; */
+    padding: unset;
+    font-weight: var(--semibold);
+}
+
+.about p {
+    font-size: 0.875rem;
+    font-weight: var(--regular);
+    color: var(--black);
+    line-height: 25px;
+}
+
+.expert img.conselor-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 1.875rem;
+}
+
+.expert .profile h6 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: unset !important;
+}
+
+.expert .about-me {
+    font-size: 0.75rem;
+    font-weight: var(--regular);
+}
+
+.expert .profile p {
+    font-size: 0.75rem;
+    font-weight: var(--regular);
+    color: var(--secondary);
+}
