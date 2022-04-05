@@ -55,16 +55,16 @@ class Diaries extends Component {
 
                     <div className="row justify-content-center category-button">
                         <div className="col-md text-center">
-                            <button className="btn btn-primary" onClick={() => this.getDataApi2(9)}>Productivity</button>
+                            <button className="btn btn-primary" onClick={() => this.getDataApi(9)}>Productivity</button>
                         </div>
                         <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi2(2)}>Relationship</button>
+                            <button className="btn btn-default" onClick={() => this.getDataApi(2)}>Relationship</button>
                         </div>
                         <div className="col-md text-center">
                             <button className="btn btn-default" onClick={() => this.getDataApi(3)}>Mental Health</button>
                         </div>
                         <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi2(8)}>Life Plan</button>
+                            <button className="btn btn-default" onClick={() => this.getDataApi(8)}>Life Plan</button>
                         </div>
                         <div className="col-md text-center">
                             <button className="btn btn-default" onClick={() => this.getDataApi()}>Other</button>
