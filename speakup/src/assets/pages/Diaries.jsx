@@ -12,9 +12,9 @@ class Diaries extends Component {
     getDataApi = () => {
         fetch("https://speakupapi.herokuapp.com/api/diaries")
             .then((response) => response.json())
-            .then((jsonHasilAmbilDariAPI) => {
+            .then((response) => {
                 this.setState({
-                    diary: jsonHasilAmbilDariAPI,
+                    diary: response,
                 });
             })
             .catch((error) => {
@@ -22,12 +22,11 @@ class Diaries extends Component {
             });
     };
     getDataApi2 = (id) => {
-        fetch("https://speakupapi.herokuapp.com/api/diaries")
-        fetch("?detail_user.user_id=" + id, { method: "GET" })
+        fetch("https://speakupapi.herokuapp.com/api/diaries?diary_type_id=" + id, {method: "GET"}) 
             .then((response) => response.json())
-            .then((jsonHasilAmbilDariAPI) => {
+            .then((response) => {
                 this.setState({
-                    diary: jsonHasilAmbilDariAPI,
+                    diary: response,
                 });
             })
             .catch((error) => {
@@ -38,6 +37,7 @@ class Diaries extends Component {
 
     componentDidMount() {
         this.getDataApi();
+        this.getDataApi2();
     }
     render() {
         return (
@@ -55,16 +55,16 @@ class Diaries extends Component {
 
                     <div className="row justify-content-center category-button">
                         <div className="col-md text-center">
-                            <button className="btn btn-primary" onClick={() => this.getDataApi2(7)}>Productivity</button>
+                            <button className="btn btn-primary" onClick={() => this.getDataApi2(9)}>Productivity</button>
                         </div>
                         <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi2(8)}>Relationship</button>
+                            <button className="btn btn-default" onClick={() => this.getDataApi2(2)}>Relationship</button>
                         </div>
                         <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi2(10)}>Mental Health</button>
+                            <button className="btn btn-default" onClick={() => this.getDataApi(3)}>Mental Health</button>
                         </div>
                         <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi2(2)}>Life Plan</button>
+                            <button className="btn btn-default" onClick={() => this.getDataApi2(8)}>Life Plan</button>
                         </div>
                         <div className="col-md text-center">
                             <button className="btn btn-default" onClick={() => this.getDataApi()}>Other</button>
