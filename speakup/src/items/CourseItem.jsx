@@ -10,7 +10,7 @@ const CourseItem = (props) => {
     <div className="col-md-4 col-sm-6">
       <div className="card custom-card-course">
         <img
-          src={props.image}
+          src={props.thumbnail}
           className="card-img-top course-image"
           alt="..."
         />
@@ -21,7 +21,7 @@ const CourseItem = (props) => {
             </div>
             <div className="col-md-4 text-end">
               <img
-                src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                src={props.user_photo}
                 className="rounded-circle circle-image"
                 alt=""
               />
