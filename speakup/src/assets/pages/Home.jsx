@@ -100,6 +100,7 @@ class Home extends React.Component {
                   return (
                     <PopularCourseItem
                       key={course.id}
+                      id={course.id}
                       img={course.thumbnail}
                       title={course.title}
                       desc={course.detail_course[0].description}

@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 const PopularCourseItem = (props) => {
+  let navigate = useNavigate();
   return (
     <div className="col-lg-5 col-md-5 col-sm-5">
       <div className="card custom-card">
@@ -11,7 +13,9 @@ const PopularCourseItem = (props) => {
           <div className="col">
             <h3 className="card-title">{props.title}</h3>
             <p className="card-text giveMeEllipsis">{props.desc}</p>
-            <button className="btn btn-primary btn-small mt-4">
+            <button onClick={() => {
+              navigate(`/courses/${props.id}`);
+            }} className="btn btn-primary btn-small mt-4">
               Learn Now
             </button>
           </div>
