@@ -110,6 +110,7 @@ class Courses extends React.Component {
                     title={course.title}
                     user_photo={course.detail_user.photo}
                     description={course.detail_course[0].description}
+                    count_of_videos = {course.detail_course.length}
                   />
                 );
               })}

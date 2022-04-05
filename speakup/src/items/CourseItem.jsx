@@ -38,7 +38,7 @@ const CourseItem = (props) => {
                 width={21}
                 alt=""
               />
-              <h4 className="mount d-inline ms-2">121 Videos</h4>
+              <h4 className="mount d-inline ms-2">{props.count_of_videos} Videos</h4>
 
               <img
                 src={IconUser}
