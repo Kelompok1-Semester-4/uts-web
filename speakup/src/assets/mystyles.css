@@ -810,3 +810,14 @@ a.back-link:hover {
     font-size: 0.625rem;
     color: var(--secondary);
 }
+
+.nav-pills button.nav-link.active {
+    background-color: var(--blue);
+    border-radius: 15px;
+}
+
+.nav-item .nav-link {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 15px;
+    color: var(--secondary);
+}
