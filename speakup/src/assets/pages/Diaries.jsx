@@ -1,78 +1,74 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 
 import Header from "../../components/Header";
 import Faq from "../../components/Faq";
 import Footer from "../../components/Footer";
 import DiaryItems from "../../items/DiaryItems";
 
-class Diaries extends Component {
-    state = {
-        diaries: [],
-    };
-    getDataApi = () => {
-        fetch("https://speakupapi.herokuapp.com/api/diaries")
-            .then((response) => response.json())
-            .then((response) => {
-                this.setState({
-                    diaries: response,
-                });
+import axios from "axios";
+import { useState } from "react";
+
+const Diaries = (props) => {
+
+    // get all data from diaries api
+    const [diaries, setDiaries] = React.useState([]);
+    useEffect(() => {
+        axios.get('https://speakupapi.herokuapp.com/api/diaries')
+            .then(res => {
+                setDiaries(res.data);
             })
-    };
-    getDataApi2 = (id) => {
-        fetch("https://speakupapi.herokuapp.com/api/diaries?diary_type_id=" + id, {method: "GET"}) 
-            .then((response) => response.json())
-            .then((response) => {
-                this.setState({
-                    diaries: response,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    });
 
+    // get search data
+    const [searchTerm, setSearch] = useState("");
 
-    componentDidMount() {
-        this.getDataApi();
-        this.getDataApi2();
-    }
-    render() {
-        return (
-            <div>
-                <Header />
-                <div className="container diaries">
-                    <div className="row diary-header justify-content-center">
-                        <h1>Browse Your Favorite Diary</h1>
-                        <p className="text-center">The best diaries are made by users for other users to enjoy</p>
+    return (
+        <div>
+            <Header />
+            <div className="container diaries">
+                <div className="row diary-header justify-content-center">
+                    <h1>Browse Your Favorite Diary</h1>
+                    <p className="text-center">The best diaries are made by users for other users to enjoy</p>
 
-                        <form className="col-md-6 mt-3">
-                            <input type="text" placeholder="Search" className="form-control" />
-                        </form>
+                    <form className="col-md-6 mt-3">
+                        <input type="text" placeholder="Search" className="form-control" onChange={(event) => {
+                            setSearch(event.target.value);
+                        }}/>
+                    </form>
+                </div>
+
+                <div className="row justify-content-center category-button">
+                    <div className="col-md text-center">
+                        <button className="btn btn-primary">Productivity</button>
                     </div>
-
-                    <div className="row justify-content-center category-button">
-                        <div className="col-md text-center">
-                            <button className="btn btn-primary" onClick={() => this.getDataApi(9)}>Productivity</button>
-                        </div>
-                        <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi(2)}>Relationship</button>
-                        </div>
-                        <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi(3)}>Mental Health</button>
-                        </div>
-                        <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi(8)}>Life Plan</button>
-                        </div>
-                        <div className="col-md text-center">
-                            <button className="btn btn-default" onClick={() => this.getDataApi()}>Other</button>
-                        </div>
+                    <div className="col-md text-center">
+                        <button className="btn btn-default">Relationship</button>
                     </div>
+                    <div className="col-md text-center">
+                        <button className="btn btn-default">Mental Health</button>
+                    </div>
+                    <div className="col-md text-center">
+                        <button className="btn btn-default">Life Plan</button>
+                    </div>
+                    <div className="col-md text-center">
+                        <button className="btn btn-default">Other</button>
+                    </div>
+                </div>
 
-                    <div className="row list-diary">
-                        <h1>List Of Diary</h1>
+                <div className="row list-diary">
+                    <h1>List Of Diary</h1>
 
-                        <div className="row diary-items">
-                            {this.state.diaries?.map((diary) => {
+                    <div className="row diary-items">
+                        {
+                            diaries?.filter((val) => {
+                                if(searchTerm == "") {
+                                    return val;
+                                } else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                    return val;
+                                } else if(val.detail_user.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                    return val;
+                                }
+                            }).map((diary) => {
                                 return (
                                     <DiaryItems
                                         key={diary.id}
@@ -82,16 +78,15 @@ class Diaries extends Component {
                                         nama={diary.detail_user?.name}
                                     />
                                 )
-                            })}
-                        </div>
+                            })
+                        }
                     </div>
                 </div>
-                <Faq />
-                <Footer />
             </div>
-        )
-    }
+            <Faq />
+            <Footer />
+        </div>
+    )
 }
-
 
 export default Diaries;

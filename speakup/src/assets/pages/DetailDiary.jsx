@@ -45,7 +45,7 @@ const DetailDiary = (props) => {
 
                             <h2 className="title">{diary.title}</h2>
 
-                            <p className="text-primary tags">Tharixs • <span className="text-secondary">
+                            <p className="text-primary tags">{diary.detail_user.name} • <span className="text-secondary">
                                 {
                                     // date format
                                     diary.created_at?.split("T")[0].split("-").reverse().join("-")
