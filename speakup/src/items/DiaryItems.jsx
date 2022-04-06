@@ -1,7 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
-const Diary = (props) => {
+const DiaryItems = (props) => {
+    let navigate = useNavigate();
     return (
         <div className="col-md-3 col-sm-6 my-3">
             <img src={props.gambar} className="diary-item" alt="" />
@@ -15,10 +17,12 @@ const Diary = (props) => {
                     <p className="created-at">22 April 2022</p>
                 </div>
                 <div className="col text-end">
-                    <button className="btn btn-primary btn-sm">Read</button>
+                    <button className="btn btn-primary btn-sm" onClick={() => {
+                        navigate(`/diaries/${props.id}`);
+                    }}>Read</button>
                 </div>
             </div>
         </div>
     )
 }
-export default Diary;
+export default DiaryItems;

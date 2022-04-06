@@ -1,32 +1,29 @@
 import React, { Component } from "react";
-import Diary from "../../items/DiaryItems";
 
 import Header from "../../components/Header";
 import Faq from "../../components/Faq";
 import Footer from "../../components/Footer";
+import DiaryItems from "../../items/DiaryItems";
 
 class Diaries extends Component {
     state = {
-        diary: [],
+        diaries: [],
     };
     getDataApi = () => {
         fetch("https://speakupapi.herokuapp.com/api/diaries")
             .then((response) => response.json())
             .then((response) => {
                 this.setState({
-                    diary: response,
+                    diaries: response,
                 });
             })
-            .catch((error) => {
-                console.log(error);
-            });
     };
     getDataApi2 = (id) => {
         fetch("https://speakupapi.herokuapp.com/api/diaries?diary_type_id=" + id, {method: "GET"}) 
             .then((response) => response.json())
             .then((response) => {
                 this.setState({
-                    diary: response,
+                    diaries: response,
                 });
             })
             .catch((error) => {
@@ -75,13 +72,14 @@ class Diaries extends Component {
                         <h1>List Of Diary</h1>
 
                         <div className="row diary-items">
-                            {this.state.diary.map((diary) => {
+                            {this.state.diaries?.map((diary) => {
                                 return (
-                                    <Diary
+                                    <DiaryItems
                                         key={diary.id}
+                                        id={diary.id}
                                         title={diary.title}
                                         gambar={diary.cover_image}
-                                        nama={diary.detail_user.name}
+                                        nama={diary.detail_user?.name}
                                     />
                                 )
                             })}
