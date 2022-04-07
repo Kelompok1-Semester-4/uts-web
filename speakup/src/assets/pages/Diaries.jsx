@@ -9,14 +9,6 @@ import axios from "axios";
 import { useState } from "react";
 
 const Diaries = (props) => {
-    // get all data from diaries api
-    const [diaries, setDiaries] = React.useState([]);
-    useEffect(() => {
-        axios.get('https://speakupapi.herokuapp.com/api/diaries')
-            .then(res => {
-                setDiaries(res.data);
-            })
-    });
 
     // get all date diary type
     const [diaryTypes, setDiaryType] = useState([]);
@@ -27,8 +19,18 @@ const Diaries = (props) => {
             });
     });
 
+    // get all data from diaries api
+    const [diaries, setDiaries] = React.useState([]);
     // get search data
     const [searchTerm, setSearch] = useState("");
+    // get id
+    const [id, setId] = useState("");
+    useEffect(() => {
+        axios.get(`https://speakupapi.herokuapp.com/api/diaries?diary_type_id=${id}`)
+            .then(res => {
+                setDiaries(res.data);
+            });
+    }, [id]);
 
     return (
         <div>
@@ -39,7 +41,7 @@ const Diaries = (props) => {
                     <p className="text-center">The best diaries are made by users for other users to enjoy</p>
 
                     <form className="col-md-6 mt-3">
-                        <input type="text" placeholder="Search" className="form-control" onChange={(event) => {
+                        <input type="text" placeholder="Search by title or author" className="form-control" onChange={(event) => {
                             setSearch(event.target.value);
                         }} />
                     </form>
@@ -51,13 +53,13 @@ const Diaries = (props) => {
                             diaryTypes.map((diaryType, index) => {
                                 return (
                                     <li className="nav-item flex-sm-fill" role="presentation" key={diaryType.id}>
-                                        <button className="nav-link btn" id={diaryType.id} data-bs-toggle="pill" data-bs-target="#pills-tips" type="button" role="tab" aria-controls="pills-tips" aria-selected="false">{diaryType.name}</button>
+                                        <button className="nav-link btn" id={diaryType.id} data-bs-toggle="pill" data-bs-target="#pills-tips" type="button" role="tab" aria-controls="pills-tips" onClick={(e) => setId(e.target.id)}>{diaryType.name}</button>
                                     </li>
                                 );
                             })
                         }
                         <li className="nav-item flex-sm-fill" role="presentation">
-                            <button className="nav-link btn" id="pills-tips-tab" data-bs-toggle="pill" data-bs-target="#pills-tips" type="button" role="tab" aria-controls="pills-tips" aria-selected="false">All</button>
+                            <button className="nav-link btn" id="pills-tips-tab" data-bs-toggle="pill" data-bs-target="#pills-tips" type="button" role="tab" aria-controls="pills-tips" aria-selected="false" onClick={(e) => setId(0)}>All</button>
                         </li>
                     </ul>
                 </center>
@@ -68,23 +70,32 @@ const Diaries = (props) => {
                     <div className="row diary-items">
                         {
                             diaries?.filter((val) => {
-                                if (searchTerm == "") {
+                                if(searchTerm == "") {
                                     return val;
                                 } else if (val.title.toLowerCase().includes(searchTerm.toLowerCase())) {
                                     return val;
-                                } else if (val.detail_user.name.toLowerCase().includes(searchTerm.toLowerCase())){
-                                    return val;
                                 }
                             }).map((diary) => {
-                                return (
-                                    <DiaryItems
-                                        key={diary.id}
-                                        id={diary.id}
-                                        title={diary.title}
-                                        gambar={diary.cover_image}
-                                        nama={diary.detail_user?.name}
-                                    />
-                                )
+                                if (diaries.length > 0) {
+                                    return (
+                                        <DiaryItems
+                                            key={diary.id}
+                                            id={diary.id}
+                                            title={diary.title}
+                                            gambar={diary.cover_image}
+                                            nama={diary.detail_user?.name}
+                                        />
+                                    )
+                                } else if(diary == null) {
+                                    return (
+                                        <div className="col-md-12">
+                                            <div className="alert alert-danger" role="alert">
+                                                <h4 className="alert-heading">Oops!</h4>
+                                                <p>No diary found</p>
+                                            </div>
+                                        </div>
+                                    )
+                                }
                             })
                         }
                     </div>
