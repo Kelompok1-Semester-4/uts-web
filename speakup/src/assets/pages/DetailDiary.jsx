@@ -20,7 +20,7 @@ const DetailDiary = (props) => {
             .then(res => {
                 setDiary(res.data);
             });
-    })
+    }, [id]);
 
     useEffect(() => {
         axios.get(`https://speakupapi.herokuapp.com/api/diaries`)
@@ -41,31 +41,31 @@ const DetailDiary = (props) => {
                         }}>← Back</a>
 
                         <div className="row">
-                            <img src={diary.cover_image} alt="" className="img-fluid diary-image" />
+                            <img src={diary?.cover_image} alt="" className="img-fluid diary-image" />
 
-                            <h2 className="title">{diary.title}</h2>
+                            <h2 className="title">{diary?.title}</h2>
 
-                            <p className="text-primary tags">{diary.detail_user.name} • <span className="text-secondary">
+                            <p className="text-primary tags">{diary?.detail_user?.name} • <span className="text-secondary">
                                 {
                                     // date format
-                                    diary.created_at?.split("T")[0].split("-").reverse().join("-")
+                                    diary?.created_at?.split("T")[0].split("-").reverse().join("-")
                                 }
                             </span></p>
 
-                            <p className="content">{diary.content}</p>
+                            <p className="content">{diary?.content}</p>
 
-                            <p className="topic">Topic: <span className="text-primary">{diary.diary_type?.name}</span></p>
+                            <p className="topic">Topic: <span className="text-primary">{diary?.diary_type?.name}</span></p>
 
                             <h4>Other Topic</h4>
 
                             <div className="row other-diary">
                                 {
-                                    diaries.map((diary, index) => {
+                                    diaries?.map((diary, index) => {
                                         if (index < 7) {
-                                            return <div className="col-lg-4 my-3" key={diary.id}>
-                                                <img src={diary.cover_image} className="img-fluid" alt="" />
+                                            return <div className="col-lg-4 my-3" key={diary?.id}>
+                                                <img src={diary?.cover_image} className="img-fluid" alt="" />
 
-                                                <h3 className="diary-title mt-3">{diary.title}</h3>
+                                                <h3 className="diary-title mt-3">{diary?.title}</h3>
                                                 <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
                                             </div>
                                         }
