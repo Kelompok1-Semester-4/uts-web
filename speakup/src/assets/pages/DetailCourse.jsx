@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header";
 import Faq from "../../components/Faq";
@@ -12,16 +13,20 @@ import CurrencyFormat from "react-currency-format";
 
 
 const DetailCourse = () => {
+
+    let navigate = useNavigate();
+
     const { id } = useParams();
-    const [course, setCourse] = useState([{}]);
+    const [course, setCourse] = useState({});
     const [benefits, setBenefits] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://speakupapi.herokuapp.com/api/courses?id=${id}`)
+        axios.get(`http://127.0.0.1:8000/api/courses?id=${id}`)
             .then(res => {
+                console.log(res.data);
                 setCourse(res.data);
             });
-    })
+    }, []);
 
     return (
         <div>
@@ -33,19 +38,26 @@ const DetailCourse = () => {
                         // date format
                         course.created_at?.split("T")[0].split("-").reverse().join("-")
                     }
-                    </span></p>
+                </span></p>
                 <h1 className="title">{course.title}</h1>
 
                 {/* IMAGE | about */}
                 <div className="row">
                     {/* TRACK */}
                     <div className="col-md-6">
-                        <img src={course.thumbnail} className="thumbnail" alt="" />
+                        {/* <img src={course.thumbnail} className="thumbnail" alt="" /> */}
+                        {
+                            course.detail_course?.map((item, index) => {
+                                if (index == 0) {
+                                    return <iframe key={item.id} width={620} height={315} src={"https://www.youtube.com/embed/" + item.video_link} title="YouTube video player" frame="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                }
+                            })
+                        }
 
                         {/* TRACK */}
 
-                        <h4>Track</h4>
-                        <div className="row mt-3 justify-content-around">
+                        <h4 className="mt-4">Track</h4>
+                        <div className="row mt-3 justify-content-between">
                             {
                                 course.detail_course?.map((course_item, index) => {
                                     if (index > 3) {
@@ -112,7 +124,9 @@ const DetailCourse = () => {
                                     </h3>
                                 </div>
                                 <div className="col-md-4">
-                                    <button className="btn btn-primary btn-small">Enroll Now</button>
+                                    <button className="btn btn-primary btn-small" onClick={() => {
+                                        navigate("/checkout/" + course.id);
+                                    }}>Enroll Now</button>
                                 </div>
                             </div>
                         </div>

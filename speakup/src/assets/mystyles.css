@@ -19,7 +19,7 @@ h6 {
 
 h1 {
     font-size: 2rem;
-    font-weight: var(--semibold);
+    font-weight: 700;
 }
 
 
@@ -82,7 +82,7 @@ img.dropdown-icon-in-menu {
 
 .home,
 .counseling,
-.diaries {
+.diaries, .login, .register, .transaction {
     margin-top: 4.875rem;
     margin-bottom: 4.875rem;
 }
@@ -822,3 +822,226 @@ a.back-link:hover {
     border-radius: 15px;
     color: var(--secondary);
 }
+
+/* LOGIN */
+.login {
+    margin-top: 159px;
+}
+.login h1 {
+    font-size: 2.5rem;
+    font-weight: var(--semibold);
+    color: var(--black);
+}
+
+.login h4 {
+    font-size: 1rem;
+    font-weight: var(--regular);
+    color: var(--secondary);
+}
+
+.login form {
+    margin-top: 74px;
+}
+
+.login form input {
+    margin-top: 32px;
+}
+
+.login form button {
+    margin-top: 54px;
+    margin-bottom: 29px;
+}
+
+/* END */
+
+
+/* REGISTER */
+.register h1 {
+    font-size: 2.5rem;
+    font-weight: var(--semibold);
+}
+
+.register h4 {
+    font-size: 1rem;
+    font-weight: var(--regular);
+    color: var(--secondary);
+}
+
+.register-tab {
+    margin-top: 47px;
+}
+
+.register .tab-content {
+    margin-top: 64px;
+}
+
+.register .nav-pills button.nav-link.active {
+    background-color: var(--blue);
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.register .nav-item .nav-link {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    /* font-weight: 500; */
+    border-radius: 15px;
+    color: var(--secondary);
+}
+
+textarea {
+    border-radius: 15px !important;
+    height: 155px !important;
+}
+
+.register img.icon {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+}
+
+.register .education-field {
+    border-radius: 15px;
+}
+
+.register h5 {
+    font-size: 0.875rem;
+    font-weight: var(--regular);
+}
+
+/* END */
+
+
+/* TRANSACTION */
+.transaction h2 {
+    font-size: 1.5rem;
+    font-weight: var(--semibold);
+    color: var(--black);
+}
+b {
+    font-weight: var(--semibold);
+}
+
+img.transaction-image {
+    width: 80%;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+}
+
+.transaction h5 {
+    font-size: 0.875rem;
+    font-weight: var(--regular);
+    color: var(--black);
+}
+/* END */
+
+/* DASHBOARD USER */
+
+.register-tab {
+    margin-top: 47px;
+}
+
+.dashboard .tab-content {
+    margin-top: 64px;
+}
+
+.dashboard .nav-pills button.nav-link.active {
+    background-color: var(--blue);
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.dashboard .nav-item .nav-link {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    /* font-weight: 500; */
+    border-radius: 15px;
+    color: var(--secondary);
+}
+
+.dashboard .menu {
+    margin-top: 97px;
+}
+
+.dashboard h2 {
+    font-size: 1.5rem;
+    font-weight: var(--semibold);
+    color: var(--black);
+}
+
+.dashboard h5 {
+    font-size: 0.875rem;
+    font-weight: var(--regular);
+}
+
+.dashboard .diary-image {
+    width: 86px;
+    height: 86px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.dashboard .diary-item {
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    padding: 17px;
+    /* margin-right: 26px; */
+    margin-bottom: 26px;
+    width: 410px;
+}
+
+.dashboard .diary-item .diary-date {
+    font-size: 0.75rem;
+    font-weight: var(--regular);
+    color: var(--secondary);
+}
+
+.btn-warning {
+    background-color: #F38401;
+    color: white;
+}
+
+.btn-edit {
+    width: 88px;
+    height: 38px;
+    font-size: 14px;
+    padding: 0;
+    border-radius: 7px;
+}
+
+.class-item {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 24px;
+    padding: 10px;
+}
+
+.class-item img {
+    width: 100%;
+    height: 250px;
+    border-radius: 24px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+
+/* END */
+
+/* ADD DIARY */
+.add-diary img.diary-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+/* END */
+
+/* CLASS */
+h4.class-title {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+}
+/* END */

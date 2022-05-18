@@ -3,9 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import IconPlay from "../assets/icon/light/Play.svg";
 import IconUser from "../assets/icon/light/User.svg";
-import HeroImage from "../assets/images/hero.png";
+import { useNavigate } from "react-router-dom";
 
 const CourseItem = (props) => {
+  let navigate = useNavigate();
   return (
     <div className="col-md-4 col-sm-6">
       <div className="card custom-card-course">
@@ -49,7 +50,11 @@ const CourseItem = (props) => {
               <h4 className="mount d-inline">{props.users} Users</h4>
             </div>
             <div className="col-md d-flex justify-content-end">
-              <button className="btn btn-primary btn-small">Join Now</button>
+            <button onClick={() => {
+              navigate(`/courses/${props.id}`);
+            }} className="btn btn-primary btn-small mt-4">
+              Learn Now
+            </button>
             </div>
           </div>
         </div>

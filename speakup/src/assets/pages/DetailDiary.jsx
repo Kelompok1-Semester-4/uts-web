@@ -16,14 +16,14 @@ const DetailDiary = (props) => {
     const [diaries, setDiaries] = React.useState([]);
 
     useEffect(() => {
-        axios.get(`https://speakupapi.herokuapp.com/api/diaries?id=${id}`)
+        axios.get(`http://127.0.0.1:8000/api/diaries?id=${id}`)
             .then(res => {
                 setDiary(res.data);
             });
     }, [id]);
 
     useEffect(() => {
-        axios.get(`https://speakupapi.herokuapp.com/api/diaries`)
+        axios.get(`http://127.0.0.1:8000/api/diaries`)
             .then(res => {
                 setDiaries(res.data);
             });
@@ -41,7 +41,7 @@ const DetailDiary = (props) => {
                         }}>← Back</a>
 
                         <div className="row">
-                            <img src={diary?.cover_image} alt="" className="img-fluid diary-image" />
+                            <img src={"http://127.0.0.1:8000/" + diary?.cover_image} alt="" className="img-fluid diary-image" />
 
                             <h2 className="title">{diary?.title}</h2>
 
@@ -62,8 +62,10 @@ const DetailDiary = (props) => {
                                 {
                                     diaries?.map((diary, index) => {
                                         if (index < 7) {
-                                            return <div className="col-lg-4 my-3" key={diary?.id}>
-                                                <img src={diary?.cover_image} className="img-fluid" alt="" />
+                                            return <div onClick={() => {
+                                                navigate(`/diaries/${diary.id}`)
+                                            }} className="col-lg-4 my-3" key={diary?.id}>
+                                                <img src={"http://127.0.0.1:8000/" + diary?.cover_image} className="img-fluid" alt="" />
 
                                                 <h3 className="diary-title mt-3">{diary?.title}</h3>
                                                 <p className="diary-body giveMeEllipsis">These findings suggest certain types of music can help boost memorization abilities and other cognitive functions ...</p>
