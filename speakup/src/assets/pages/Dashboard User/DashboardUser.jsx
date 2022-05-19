@@ -9,6 +9,7 @@ const DashboardUser = () => {
     const [user, setUser] = useState({});
     const [diaries, setDiaries] = useState([]);
     const [course, setCourse] = useState([]);
+    const [role, setRole] = useState("");
 
     const token = localStorage.getItem("token");
 
@@ -16,17 +17,22 @@ const DashboardUser = () => {
     // fetch authenticated user by token
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/user", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
             .then((res) => {
                 setUser(res.data.data.detailUser);
+                setRole(res.data.data.user.role_id);
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
+
+    if (role == 2 || role == 3) {
+        window.location.href = "/";
+    }
 
     // fetch diaries by user id
     useEffect(() => {
@@ -246,27 +252,27 @@ const DashboardUser = () => {
                                 {course?.map((course) => {
                                     return (
                                         <div className="col-md-3 mx-4 class-item">
-                                        <img
-                                            src={course['detail_transaction']['course']['thumbnail']}
-                                            className="img-fluid square"
-                                            alt=""
-                                        />
+                                            <img
+                                                src={course['detail_transaction']['course']['thumbnail']}
+                                                className="img-fluid square"
+                                                alt=""
+                                            />
 
-                                        <div className="row">
-                                            <h4 className="class-title">{course['detail_transaction']['course']['title']}</h4>
-                                            <p className="giveMeEllipsis col-md-8"> Enroll Date: 
-                                                {
-                                                    course['detail_transaction']['created_at']?.split("T")[0].split("-").reverse().join("-")
-                                                }
-                                            </p>
+                                            <div className="row">
+                                                <h4 className="class-title">{course['detail_transaction']['course']['title']}</h4>
+                                                <p className="giveMeEllipsis col-md-8"> Enroll Date:
+                                                    {
+                                                        course['detail_transaction']['created_at']?.split("T")[0].split("-").reverse().join("-")
+                                                    }
+                                                </p>
 
-                                            <div className="col">
-                                                <button className="btn btn-primary btn-sm mt-2 mb-2">
-                                                    Learn
-                                                </button>
+                                                <div className="col">
+                                                    <button className="btn btn-primary btn-sm mt-2 mb-2">
+                                                        Learn
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     );
                                 })}
                             </div>
@@ -308,9 +314,9 @@ const DashboardUser = () => {
                             <div className="row mt-5">
 
                             </div>
-                    </div>
-
                         </div>
+
+                    </div>
                     <div className="mt-5 row">
                         <span></span>
                     </div>

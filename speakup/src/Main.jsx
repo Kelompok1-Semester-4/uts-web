@@ -5,6 +5,7 @@ import Counseling from "./assets/pages/Counseling";
 import Courses from "./assets/pages/Courses";
 import AddDiary from "./assets/pages/Dashboard User/AddDiary";
 import DashboardUser from "./assets/pages/Dashboard User/DashboardUser";
+import DashboardConselor from "./assets/pages/Dashboard Conselor/DashboardConselor";
 import DetailCourse from "./assets/pages/DetailCourse";
 import DetailDiary from "./assets/pages/DetailDiary";
 import Diaries from "./assets/pages/Diaries";
@@ -31,6 +32,7 @@ const Main = () => {
                     <Route path="/add-diary" element={<AddDiary />} />
                     <Route path="/edit-diary/:id" element={<AddDiary />} />
                     <Route path="/dashboard-user" element={<DashboardUser />} />
+                    <Route path="/dashboard-conselor" element={<DashboardConselor />} />
                 </Routes>
             </div>
         </Router>

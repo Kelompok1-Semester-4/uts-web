@@ -82,7 +82,10 @@ img.dropdown-icon-in-menu {
 
 .home,
 .counseling,
-.diaries, .login, .register, .transaction {
+.diaries,
+.login,
+.register,
+.transaction {
     margin-top: 4.875rem;
     margin-bottom: 4.875rem;
 }
@@ -653,7 +656,7 @@ img.diary-item {
 
 .track-item title {
     display: flex;
-    align-items:center;
+    align-items: center;
 }
 
 .track-item p {
@@ -783,6 +786,7 @@ img.diary-item {
     border-radius: 10px;
     object-fit: cover;
 }
+
 /* END */
 
 a.back-link {
@@ -790,7 +794,7 @@ a.back-link {
 }
 
 a.back-link:hover {
-    color: var(--blue)!important;
+    color: var(--blue) !important;
 }
 
 .other-diary .diary-title {
@@ -827,6 +831,7 @@ a.back-link:hover {
 .login {
     margin-top: 159px;
 }
+
 .login h1 {
     font-size: 2.5rem;
     font-weight: var(--semibold);
@@ -918,6 +923,7 @@ textarea {
     font-weight: var(--semibold);
     color: var(--black);
 }
+
 b {
     font-weight: var(--semibold);
 }
@@ -937,6 +943,7 @@ img.transaction-image {
     font-weight: var(--regular);
     color: var(--black);
 }
+
 /* END */
 
 /* DASHBOARD USER */
@@ -1031,12 +1038,13 @@ img.transaction-image {
 /* END */
 
 /* ADD DIARY */
-.add-diary img.diary-image {
+.add-diary img .diary-image {
     width: 200px;
     height: 200px;
     border-radius: 15px;
     object-fit: cover;
 }
+
 /* END */
 
 /* CLASS */
@@ -1044,4 +1052,5 @@ h4.class-title {
     font-size: 1.5rem !important;
     font-weight: 600;
 }
+
 /* END */
